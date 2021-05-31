@@ -1,13 +1,15 @@
+
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> 
     <router-link :to="{name: 'About'}">About</router-link>
     <router-link :to="{name:'MiPerfil'}">Mi Perfil</router-link>
     <router-link :to="{name:'Login'}">Login</router-link>
-    <router-link :to="{name:'MiPerfiles'}">holas</router-link>
+    <router-link :to="{name:'MiPerfiles'}">Favoritas</router-link>
     
-  </div>
+  
   <router-view/>
+  </div>
 </template>
 
 <style>
@@ -37,3 +39,17 @@
   background-color: rgb(255, 187, 0);
 }
 </style>
+
+<carruosel></carruosel>
+<script>
+    export default{
+      name:'app',
+      components:{
+
+      },
+      data(){
+        return{
+        }
+      }
+ }
+</script>

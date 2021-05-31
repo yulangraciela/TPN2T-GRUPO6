@@ -31,6 +31,9 @@ const routes = [{
         component: MiPerfiles
     }
 
+
+
+
 ]
 
 const router = createRouter({

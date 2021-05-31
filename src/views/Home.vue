@@ -1,18 +1,25 @@
+
 <template>
-  <div class="home">
-    <h1>Optimus</h1>
-     
-  </div>
-</template>
 
-<script>
+    <div>
+    <h1><carruosel/></h1>
+    </div>
+    
 
+  
 
-
-export default {
-  name: 'Home',
-  components: {
    
-  }
-}
+</template>
+<script>
+import carruosel from '../components/carruosel.vue'
+ export default{
+      name:'Home',
+      components:{
+            carruosel
+      },
+      data(){
+        return{
+        }
+      }
+      }
 </script>
