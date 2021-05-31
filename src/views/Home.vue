@@ -1,25 +1,33 @@
-
 <template>
-
-    <div>
-    <h1><carruosel/></h1>
-    </div>
-    
-
-  
-
+  <div :style="myStyle" class="Home">
    
+    <img alt="Vue logo" src="../assets/logo1.svg" />
+
+    <router-link :to="{ name: 'MisPracticas' }">ir a mis Practicas</router-link>
+    <carousel />
+    <MisPracticas/>
+  </div>
 </template>
+
 <script>
-import carruosel from '../components/carruosel.vue'
- export default{
-      name:'Home',
-      components:{
-            carruosel
-      },
-      data(){
-        return{
-        }
-      }
-      }
+// @ is an alias to /src
+import carousel from "../components/carousel.vue";
+import MisPracticas from "../components/MisPracticas.vue";
+export default {
+  name: "Home",
+  data(){
+       return{
+         myStyle:{
+            backgroundColor:"#16a085" 
+         }
+            }
+  },
+  components:{
+
+    carousel,
+    MisPracticas,
+  
+  }
+  
+};
 </script>

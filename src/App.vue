@@ -1,15 +1,18 @@
-
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> 
-    <router-link :to="{name: 'About'}">About</router-link>
-    <router-link :to="{name:'MiPerfil'}">Mi Perfil</router-link>
-    <router-link :to="{name:'Login'}">Login</router-link>
-    <router-link :to="{name:'MiPerfiles'}">Favoritas</router-link>
-    
-  
-  <router-view/>
-  </div>
+<b-container>  
+      <b-nav card-header pills>
+        <!-- <b-nav-item>'s with child routes. Note the trailing slash on the first <b-nav-item> -->
+        <b-nav-item to="/" exact exact-active-class="active">Home</b-nav-item>
+        <b-nav-item :to="{ name: 'About' }" exact exact-active-class="active">About</b-nav-item>
+        <b-nav-item :to="{ name: 'Login' }" exact exact-active-class="active">Login</b-nav-item>
+        <b-nav-item :to="{ name: 'MisPracticas' }" exact exact-active-class="active">Mis Practicas</b-nav-item>
+        <b-nav-item :to="{ name: 'LasMasPracticadas' }" exact exact-active-class="active">Favoritas</b-nav-item>
+      </b-nav>
+      <!-- Child route gets rendered in <router-view> or <nuxt-child> -->
+        
+      <router-view></router-view>
+        </b-container>
+   
 </template>
 
 <style>
@@ -19,7 +22,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #476c90;
-  ;
 }
 
 #nav {
@@ -40,16 +42,12 @@
 }
 </style>
 
-<carruosel></carruosel>
 <script>
-    export default{
-      name:'app',
-      components:{
-
-      },
-      data(){
-        return{
-        }
-      }
- }
+export default {
+  name: "app",
+  components: {},
+  data() {
+    return {};
+  },
+};
 </script>
