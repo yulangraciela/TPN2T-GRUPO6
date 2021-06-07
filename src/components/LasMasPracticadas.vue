@@ -1,19 +1,14 @@
 <template>
-  <div>
-    <h1>las mas practicadas</h1>
-
-    <h2>   boton </h2>
-  </div>
-  
+  <Titulo texto="Favoritas"></Titulo>
 </template>
 
 <script>
+import Titulo from "../components/Titulo.vue";
 export default {
   name: "LasMasPracticadas",
-  components: { 
-
-   },
- 
+  components: {
+    Titulo,
+  },
 };
 </script>
 
