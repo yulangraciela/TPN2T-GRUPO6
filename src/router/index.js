@@ -6,50 +6,48 @@ import Login from "../components/Login.vue";
 import MisPracticas from "../components/MisPracticas.vue";
 import LasMasPracticadas from "../components/LasMasPracticadas.vue";
 
+import Reproductor from "../components/Reproductor.vue";
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: About,
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    //component: () =>
-    //import ( /* webpackChunkName: "about" */ "../views/About.vue"),
-  },
-  {
-    path: "/Login",
-    name: "Login",
-    component: Login,
-  },
-  {
-    path: "/Login",
-    name: "Login",
-    component: Login,
-  },
-  {
-    path: "/MisPracticas",
-    name: "MisPracticas",
-    component: MisPracticas,
-  },
-  {
-    path: "/LasMasPracticadas",
-    name: "LasMasPracticadas",
-    component: LasMasPracticadas,
-  },
+const routes = [{
+        path: "/",
+        name: "Home",
+        component: Home,
+    },
+
+    {
+        path: "/about",
+        name: "About",
+        component: About,
+    },
+    {
+        path: "/Login",
+        name: "Login",
+        component: Login,
+    },
+    {
+        path: "/MisPracticas",
+        name: "MisPracticas",
+        component: MisPracticas,
+    },
+    {
+        path: "/lasMasPracticadas",
+        name: "LasMasPracticadas",
+        component: LasMasPracticadas,
+    },
+
+    {
+        path: "/Reproductor/:key",
+        name: "Reproductor",
+        component: Reproductor,
+        props: { default: true }
+    },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes,
 });
 
 export default router;
