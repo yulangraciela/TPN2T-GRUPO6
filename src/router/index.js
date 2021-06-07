@@ -6,6 +6,7 @@ import Login from "../components/Login.vue";
 import MisPracticas from "../components/MisPracticas.vue";
 import LasMasPracticadas from "../components/LasMasPracticadas.vue";
 
+
 import Reproductor from "../components/Reproductor.vue";
 Vue.use(VueRouter);
 
@@ -37,10 +38,10 @@ const routes = [{
     },
 
     {
-        path: "/Reproductor/:key",
+        path: "/Reproductor/:id",
         name: "Reproductor",
         component: Reproductor,
-        props: { default: true }
+        props: true,
     },
 ];
 

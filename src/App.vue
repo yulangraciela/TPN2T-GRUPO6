@@ -12,7 +12,9 @@
       <b-nav-item :to="{ name: 'MisPracticas' }" exact-active-class="active"
         >Cancionero</b-nav-item
       >
-      <b-nav-item :to="{ name:'LasMasPracticadas'}" exact-active-class="active"
+      <b-nav-item
+        :to="{ name: 'LasMasPracticadas' }"
+        exact-active-class="active"
         >Favoritas</b-nav-item
       >
       <b-nav-item :to="{ name: 'Reproductor' }" exact-active-class="active"
