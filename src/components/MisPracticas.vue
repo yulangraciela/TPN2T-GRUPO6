@@ -1,52 +1,42 @@
-
 <template>
-  
- <div>  
-     <b-container  class="p-4 bg-dark">
-  <b-card-group deck>
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-      <b-card-text>
-        This card has supporting text below as a natural lead-in to additional content.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </template>
-    </b-card>
-  </b-card-group>
-  </b-container>
-</div>
-         
-     
+  <div>
+    <Titulo texto="Cancionero" />
+    <div v-for="item of arrayCancionero" :key="item.key">
+      <b-card :img-src="`/data/${item.thumbnailhash}.0.cache`" img-top>
+        <b-button to="/Reproductor" variant="primary">ir</b-button>
+      </b-card>
+    </div>
+  </div>
 </template>
 
 <script>
+import Titulo from "../components/Titulo.vue";
 export default {
   name: "MisPracticas",
-  components: { 
+  components: {
+    Titulo,
+  },
+  props: {},
 
-   },
-    props: {
-    msg: String,
+  data() {
+    return {
+      arrayCancionero: [],
+    };
+  },
+  methods: {
+    async consumirApi() {
+      try {
+        const data = await fetch("/data/browser.json")
+        const array = await data.json()
+        console.log(array)
+        this.arrayCancionero = array
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
+  created() {
+    this.consumirApi();
   },
 };
 </script>
