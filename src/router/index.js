@@ -6,7 +6,6 @@ import Login from "../components/Login.vue";
 import MisPracticas from "../components/MisPracticas.vue";
 import LasMasPracticadas from "../components/LasMasPracticadas.vue";
 
-
 import Reproductor from "../components/Reproductor.vue";
 Vue.use(VueRouter);
 
@@ -43,6 +42,7 @@ const routes = [{
         component: Reproductor,
         props: true,
     },
+
 ];
 
 const router = new VueRouter({

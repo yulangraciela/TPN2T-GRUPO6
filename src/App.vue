@@ -35,11 +35,9 @@
   text-align: center;
   color: #476c90;
 }
-
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
@@ -47,7 +45,6 @@
   padding: 10px;
   border-radius: 4px;
 }
-
 #nav a.router-link-exact-active {
   color: #eb502a;
   background-color: rgb(255, 187, 0);

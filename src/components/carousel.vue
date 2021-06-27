@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div><router-link to="/Login">login </router-link></div>
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -61,9 +62,7 @@
           />
         </template>
       </b-carousel-slide>
-
     </b-carousel>
-    
   </div>
 </template>
 <script>

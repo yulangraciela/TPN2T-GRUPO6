@@ -20,7 +20,6 @@ import MisPracticas from "../components/MisPracticas.vue";
 import Titulo from "../components/Titulo.vue";
 export default {
   name: "Home",
-
   data() {
     return {
       myStyle: {
