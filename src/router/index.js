@@ -5,8 +5,9 @@ import About from "../views/About.vue";
 import Login from "../components/Login.vue";
 import MisPracticas from "../components/MisPracticas.vue";
 import LasMasPracticadas from "../components/LasMasPracticadas.vue";
-
+import MenuUsuario from "../components/MenuUsuario.vue";
 import Reproductor from "../components/Reproductor.vue";
+
 Vue.use(VueRouter);
 
 const routes = [{
@@ -14,6 +15,18 @@ const routes = [{
         name: "Home",
         component: Home,
     },
+
+    {
+        path: "/MenuUsuario",
+        name: "MenuUsuario",
+        component: MenuUsuario,
+      },
+      {
+        path: "/MenuUsuario/:nombreUsuario",
+       name: "MenuUsuario",
+        component: MenuUsuario,
+        props:true
+      },
 
     {
         path: "/about",

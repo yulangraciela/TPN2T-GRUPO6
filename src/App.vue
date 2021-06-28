@@ -9,6 +9,9 @@
       <b-nav-item :to="{ name: 'Login' }" exact-active-class="active"
         >Login</b-nav-item
       >
+      <b-nav-item :to="{ name: 'MenuUsuario' }" exact-active-class="active"
+        >MenuUsuario</b-nav-item
+      >
       <b-nav-item :to="{ name: 'MisPracticas' }" exact-active-class="active"
         >Cancionero</b-nav-item
       >

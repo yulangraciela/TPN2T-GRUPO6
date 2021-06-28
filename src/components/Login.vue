@@ -89,12 +89,6 @@ let i =0;
 
 },
     login(){
-   //        let json= {
-  //      "usuario" : this.NombreUsuario,
-    //    "contraseña": this.contraseña,
-   //   };
-   //   axios.post('http://solodata.es/auth', json)
-   //   .them(data =>{
      console.log("entro")
      this.getUsuarios()
         if(this.coincide){

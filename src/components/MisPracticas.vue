@@ -7,6 +7,7 @@
         <b-button :to="'/Reproductor/' + `${item.id}`" variant="primary"
           >ir</b-button
         >
+        <the>
      
     </div>
     <Footer />
