@@ -12,14 +12,24 @@ export default new Vuex.Store({
         favoritas:[]
     },
     mutations: {
-    agregarCancion(state, cancion) {
-        state.reproducidas.push (cancion);
-    }   
+             agregarCancion(state, cancion) {
+              state.reproducidas.push (cancion);
     },
-    actions: {
-        accionAgregar({commit}, cancion){
-            commit('agregarCancion', cancion)
+            agregarFavoritas(state, cancion) {
+             state.favoritas.push (cancion);
+
+    }
+    },
+           actions: {
+            accionAgregar({commit}, cancion){
+            commit('agregarCancion', cancion);
+            
+        },
+    
+        accionAgregarFavoritas({commit}, cancion){
+            commit('agregarFavoritas', cancion);
+            
         }
-    },
+},
     modules: {},
 });

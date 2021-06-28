@@ -1,8 +1,10 @@
 <template>
   <div>
     <Titulo texto=" Reproductor de Musica" />
-    Cancion: {{ cancion.name }}<br/>
-  reproducidas:{{this.reproducidas}}
+    Cancion: {{ reproduciendo.cancion.name }}<br/>
+    
+  <br/>
+
     <b-progress
       :value="timePassed"
       :max="max"
@@ -10,14 +12,14 @@
       animated
     ></b-progress>
     <b-button @click="stopTimer()" variant="primary">detener cancion</b-button>
-    Puntaje obtenido: {{ puntaje }}
+    Puntaje obtenido: {{ reproduciendo.puntaje }}
   </div>
 </template>
 
 <script>
 import Titulo from "../components/Titulo";
 import axios from "axios";
-import {mapState,  mapActions} from 'vuex';
+import {mapState, mapActions} from 'vuex';
 export default {
   props: {
     id: String,
@@ -28,7 +30,7 @@ export default {
       timerInterval: 0,
       timePassed: 0,
       max: 200,
-      puntaje: 0
+      reproduciendo: null
     };
   },
   name: "Reproductor",
@@ -46,18 +48,34 @@ export default {
             this.id
         );
         this.cancion = await res.data;
-        this.accionAgregar (this.cancion);
-        //calcularFavoritas ();
+        this.accionAgregar (this.reproduciendo = {
+          cancion: this.cancion,
+          puntaje: 0,
+          usuario: null
+        });
+        this.calcularFavoritas ();
       } catch (error) {
         console.log(error);
       }
     },
+    calcularFavoritas (){
+      let cant=0;
+      let c ;
+      for(c of this.reproducidas){ 
+        if (c.cancion.id==this.reproduciendo.cancion.id)cant++;
+      }
+          if(cant>=3){ 
+            let existe = this.favoritas.filter(f=> f.cancion.id==this.reproduciendo.cancion.id);
+          if(existe.length==0)
+         this.accionAgregarFavoritas (this.reproduciendo);
+      }
+    },
     stopTimer() {
       clearInterval(this.timerInterval);
-      if (this.timePassed >= this.max) {
-        this.puntaje = (Math.random () * 100000).toFixed (0); 
-        this.puntaje = this.timePassed;
-      }
+       
+        this.reproduciendo.puntaje = (Math.random () * 100000).toFixed (0); 
+        
+      
     },
     startTimer() {
       this.timerInterval = setInterval(() => {
@@ -65,12 +83,13 @@ export default {
         else this.timePassed += 1;
       }, 100);
     },
+    ...mapActions(['accionAgregar','accionAgregarFavoritas']),
   },
   created() {
     this.consumirApi();
     this.startTimer();
   },
-  ...mapActions(['accionAgregar']),
+  
 };
 </script>
 <style></style>
