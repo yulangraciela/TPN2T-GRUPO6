@@ -1,136 +1,41 @@
 <template>
-  <b-container fluid class="p-4 bg-dark">
-    <ul class="b">
-      <div id="formContent">
-        <h4>
+  <b-container fluid class="p-4">
+        <h1>
           Bienvenidos al Menu de usuario, aqui se encuenta las estadisticas
           personales
-        </h4>
-        <div>
-          <li>
-            <label>Nombre de usuario: {{ nombreUsuario }}</label>
-          </li>
-          <h7>{{ buscarUsuario() }}</h7>
-
-          <li>
-            <label> Nivel de usuario: {{ this.nivel }} </label>
-          </li>
-          <li>
-            <label>cantidad de canciones del usuario: {{ this.cant }}</label>
-          </li>
-          <li>
-            <label>cantidad de minutos del usuario: {{ this.minutos }}</label>
-          </li>
-          <li><label>canciones del usuario: </label></li>
+        </h1>
+        <div class="row">
+          <div class="col-6">
+            <label>Nombre de usuario: {{ usuario.nombreUsuario }}</label>
+          </div>
+          <div class="col-6">
+            <label>Puntos totales: {{ usuario.puntaje }}</label>
+          </div>
         </div>
+        <h2>Canciones reproducida por el usuario</h2>
 
-        <div>
-          <router-link class="button" to="/MisPracticas"
-            >ir a Mis Practicas
-          </router-link>
+        <div v-for="(item, index) in this.usuario.canciones" :key="index" class="col">
+          {{ item.cancion.name }}
+          <b-button :to="'/Reproductor/' + `${item.cancion.id}`" variant="primary"
+            >ir</b-button
+          >
         </div>
-      </div>
-    </ul>
   </b-container>
 </template>
 
 <script>
-import axios from "axios";
-const fs = require("fs").promises;
-const path = "./components/usuario.json";
-export default {
-  props: {
-    nombreUsuario: {
-      type: String,
-      default: "nombreUsuario2",
-    },
-  },
+import { mapState } from "vuex";
 
-  //async created(){
-  //this.usuario=await this.getUsuario(this.nombreUsuario);
-  //},
+export default {
+  
   data() {
     return {
-      usuario: {},
-      usuarios: [],
-      cant: "",
-      nivel: 0,
-      minutos: 0,
     };
   },
-
-  methods: {
-    //i=0;i<path.length;i++
-    buscarUsuario() {
-      let i = 0;
-      let aray = [];
-      this.getUsuarios();
-      for (i in this.usuarios) {
-        let us = this.usuarios[i].nombreUsuario;
-        aray.push(us);
-      }
-      let e = aray.indexOf(this.nombreUsuario);
-      console.log("encontrado: " + e);
-      if (this.usuarios[e] >= 0) {
-        this.usuario = this.usuarios[e];
-        console.log("paso bien");
-        this.cant = this.usuario.canciones.length;
-        this.minutos = this.usuario.minutos;
-        this.nivel = this.usuario.nivel;
-      } else {
-        console.log("paso mal" + e);
-        this.usuario = this.usuarios[e];
-        this.cant = this.usuario.canciones.length;
-        this.minutos = this.usuario.minutos;
-        this.nivel = this.usuario.nivel;
-        //this.usuario = null; //this.usuarios[e];
-      }
-
-      //this.nivel=this.usuario.nivel
-    },
-
-    async getUsuarios() {
-      try {
-        let response = await axios.get(
-          "https://60d7b108307c300017a5f974.mockapi.io/usuarios/usuarios"
-        );
-        this.usuarios = response.data;
-        console.log("paso bien");
-      } catch (error) {
-        console.log(error);
-      }
-    },
-
-    async addUsuarios(usuario) {
-      const usuarios = await this.getUsuarios();
-      usuarios.sort((a, b) => a._id - b._id);
-      const lastId = usuarios[usuarios.length - 1]._id;
-      usuario._id = lastId + 1;
-      this.usuarios.push(usuario);
-      await fs.writeFile(path, JSON.stringify(usuarios, null, " "));
-
-      return usuario;
-    },
-    async getNombre(id) {
-      const usuarios = await this.getUsuarios();
-      const usuario = usuarios.find((usuario) => usuario._id == id);
-      return usuario._id;
-    },
-
-    async buscarusu(nombreUsuario) {
-      let user = "";
-
-      for (let i = 0; i < path.length; i++) {
-        if (path[i].this.nombreUsuario == nombreUsuario) {
-          user = path[i];
-        }
-      }
-
-      return user;
-    },
+  computed: {
+    ...mapState(["usuario"]),
   },
-  created() {
-    this.buscarUsuario();
+  methods: {
   },
 };
 </script>

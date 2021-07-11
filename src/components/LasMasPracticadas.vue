@@ -2,7 +2,7 @@
   <div>
     <Titulo texto="Favoritas"></Titulo>
     <div v-for="(item, index) in favoritas" :key="index">
-      <p>{{ item.cancion.name }}<br />puntaje:{{ item.puntaje }}</p>
+      <p>{{ item.cancion.name }}</p>
     </div>
   </div>
 </template>

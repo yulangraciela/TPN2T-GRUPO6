@@ -6,18 +6,18 @@
       <b-nav-item :to="{ name: 'About' }" exact-active-class="active"
         >About</b-nav-item
       >
-      <b-nav-item :to="{ name: 'Login' }" exact-active-class="active"
+      <b-nav-item :to="{ name: 'Login' }" exact-active-class="active" 
         >Login</b-nav-item
       >
       <b-nav-item :to="{ name: 'MenuUsuario' }" exact-active-class="active"
-        >MenuUsuario</b-nav-item
+        >Menu Usuario</b-nav-item
       >
-      <b-nav-item :to="{ name: 'MisPracticas' }" exact-active-class="active"
+      <b-nav-item :to="{ name: 'MisPracticas' }" exact-active-class="active" v-if="usuario!=null"
         >Cancionero</b-nav-item
       >
       <b-nav-item
         :to="{ name: 'LasMasPracticadas' }"
-        exact-active-class="active"
+        exact-active-class="active" v-if="usuario!=null"
         >Favoritas</b-nav-item
       >
     </b-nav>
@@ -52,11 +52,15 @@
 </style>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "app",
   components: {},
   data() {
     return {};
+  },
+  computed: {
+    ...mapState(["usuario"]),
   },
 };
 </script>

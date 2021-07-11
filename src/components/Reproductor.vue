@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="p-4">
-    <div v-if="usuario!=null">
+    <div v-if="usuario != null">
       <Titulo texto=" Reproductor de Musica" />
       Cancion: {{ reproduciendo.cancion.name }}<br />
 
@@ -17,9 +17,7 @@
       >
       Puntaje obtenido: {{ reproduciendo.puntaje }}
     </div>
-    <div v-else class="text-danger"> 
-      DEBE LOGUEARSE PRIMERO
-    </div>
+    <div v-else class="text-danger">DEBE LOGUEARSE PRIMERO</div>
   </b-container>
 </template>
 
@@ -36,7 +34,7 @@ export default {
       cancion: {},
       timerInterval: 0,
       timePassed: 0,
-      max: 200,
+      max: 100,
       reproduciendo: null,
     };
   },
@@ -59,20 +57,18 @@ export default {
           (this.reproduciendo = {
             cancion: this.cancion,
             puntaje: 0,
-            usuario: null,
           })
         );
-        this.calcularFavoritas();
-        this.actualizarUsuario();
       } catch (error) {
         console.log(error);
       }
     },
     async actualizarUsuario() {
       try {
-        await axios.put (
+        await axios.put(
           "https://60eb2e32e9647b0017cddcfa.mockapi.io/usuarios/optimus/" +
-            this.usuario.id, this.usuario
+            this.usuario.id,
+          this.usuario
         );
       } catch (error) {
         console.log(error);
@@ -91,10 +87,17 @@ export default {
         if (existe.length == 0) this.accionAgregarFavoritas(this.reproduciendo);
       }
     },
+    finalizaReproduccion() {
+      this.reproduciendo.puntaje = ((this.timePassed * 10) / this.max).toFixed(0);
+      this.calcularFavoritas();
+      this.accionActualizarPuntos(
+        this.reproduciendo.puntaje
+      );
+      this.actualizarUsuario();
+    },
     stopTimer() {
       clearInterval(this.timerInterval);
-
-      this.reproduciendo.puntaje = (this.timePassed * 10/200).toFixed(0);
+      this.finalizaReproduccion();
     },
     startTimer() {
       this.timerInterval = setInterval(() => {
@@ -102,7 +105,11 @@ export default {
         else this.timePassed += 1;
       }, 100);
     },
-    ...mapActions(["accionAgregar", "accionAgregarFavoritas"]),
+    ...mapActions([
+      "accionAgregar",
+      "accionAgregarFavoritas",
+      "accionActualizarPuntos",
+    ]),
   },
   created() {
     this.consumirApi();
