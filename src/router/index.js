@@ -10,58 +10,58 @@ import Reproductor from "../components/Reproductor.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
-        path: "/",
-        name: "Home",
-        component: Home,
-    },
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
 
-    {
-        path: "/MenuUsuario",
-        name: "MenuUsuario",
-        component: MenuUsuario,
-      },
-      {
-        path: "/MenuUsuario/:nombreUsuario",
-       name: "MenuUsuario",
-        component: MenuUsuario,
-        props:true
-      },
+  {
+    path: "/MenuUsuario",
+    name: "MenuUsuario",
+    component: MenuUsuario,
+  },
+  {
+    path: "/MenuUsuario/:nombreUsuario",
+    name: "MenuUsuario",
+    component: MenuUsuario,
+    props: true,
+  },
 
-    {
-        path: "/about",
-        name: "About",
-        component: About,
-    },
-    {
-        path: "/Login",
-        name: "Login",
-        component: Login,
-    },
-    {
-        path: "/MisPracticas",
-        name: "MisPracticas",
-        component: MisPracticas,
-    },
-    {
-        path: "/lasMasPracticadas",
-        name: "LasMasPracticadas",
-        component: LasMasPracticadas,
-    },
+  {
+    path: "/about",
+    name: "About",
+    component: About,
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/MisPracticas",
+    name: "MisPracticas",
+    component: MisPracticas,
+  },
+  {
+    path: "/lasMasPracticadas",
+    name: "LasMasPracticadas",
+    component: LasMasPracticadas,
+  },
 
-    {
-        path: "/Reproductor/:id",
-        name: "Reproductor",
-        component: Reproductor,
-        props: true,
-    },
-
+  {
+    path: "/Reproductor/:id",
+    name: "Reproductor",
+    component: Reproductor,
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
-    mode: "history",
-    base: process.env.BASE_URL,
-    routes,
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes,
 });
 
 export default router;

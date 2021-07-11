@@ -1,14 +1,11 @@
 <template>
-  <div>
-    
+  <div class="row">
     <Titulo texto="Cancionero" />
-      <div  v-for="(item, index) in arrayCancionero" :key="index">
-        {{ item.name }}
-        <b-button :to="'/Reproductor/' + `${item.id}`" variant="primary"
-          >ir</b-button
-        >
-        
-     
+    <div v-for="(item, index) in arrayCancionero" :key="index" class="col">
+      {{ item.name }}
+      <b-button :to="'/Reproductor/' + `${item.id}`" variant="primary"
+        >ir</b-button
+      >
     </div>
     <Footer />
   </div>
@@ -44,9 +41,6 @@ export default {
         console.log(error);
       }
     },
-  },
-  agregarCancion() {
-    this.name;
   },
   created() {
     this.consumirApi();

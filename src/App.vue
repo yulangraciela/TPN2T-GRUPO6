@@ -20,9 +20,6 @@
         exact-active-class="active"
         >Favoritas</b-nav-item
       >
-      <b-nav-item :to="{ name: 'Reproductor' }" exact-active-class="active"
-         >Mi Leccion</b-nav-item
-      >
     </b-nav>
     <!-- Child route gets rendered in <router-view> or <nuxt-child> -->
 
