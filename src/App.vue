@@ -3,9 +3,6 @@
     <b-nav card-header pills>
       <!-- <b-nav-item>'s with child routes. Note the trailing slash on the first <b-nav-item> -->
       <b-nav-item to="/" exact-active-class="active">Home</b-nav-item>
-      <b-nav-item :to="{ name: 'About' }" exact-active-class="active"
-        >About</b-nav-item
-      >
       <b-nav-item :to="{ name: 'Login' }" exact-active-class="active" 
         >Login</b-nav-item
       >

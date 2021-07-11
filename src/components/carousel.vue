@@ -8,8 +8,8 @@
       controls
       indicators
       background="#FF5733"
-      img-width="512px"
-      img-height="240"
+      img-width="200px"
+      img-height="200PX"
       style="text-shadow: 1px 1px 2px #373345"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
@@ -17,9 +17,9 @@
       <b-carousel-slide>
         <template #img>
           <img
-            class="d-block img-fluid w-100"
-            width="512"
-            height="240"
+            class="d-block w-100"
+            width="512px"
+            height="512px"
             src="../assets/piano.jpg"
             alt="image slot"
           />
@@ -28,9 +28,9 @@
       <b-carousel-slide>
         <template #img>
           <img
-            class="d-block img-fluid w-100"
+            class="d-block w-100"
             width="512px"
-            height="240px"
+            height="512px"
             src="../assets/guitarra.jpg"
             alt="image slot"
           />
@@ -40,9 +40,9 @@
       <b-carousel-slide>
         <template #img>
           <img
-            class="d-block img-fluid w-100"
-            width="512"
-            height="240"
+            class="d-block  w-100"
+            width="512px"
+            height="512px"
             src="../assets/piano2.jpg"
             alt="image slot"
           />
@@ -54,9 +54,9 @@
       <b-carousel-slide>
         <template #img>
           <img
-            class="d-block img-fluid w-100"
-            width="512"
-            height="240"
+            class="d-block "
+            width="512px"
+            height="512px"
             src="../assets/piano.jpg"
             alt="image slot"
           />

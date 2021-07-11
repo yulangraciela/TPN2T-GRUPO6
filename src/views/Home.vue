@@ -1,12 +1,14 @@
 <template>
   <b-container fluid="sm">
     <div :style="myStyle" class="Home">
-      <p class="bg-dark">
-        <img alt="Vue logo" src="../assets/logo1.svg" />
+      <p class="bg-dark text-center">
+        <img alt="Vue logo" style="width: 50%" src="../assets/logo1.svg" />
       </p>
-      <router-link :to="{ name: 'MisPracticas' }"
-        >ir a mis Practicas</router-link
+      <p class="bg-light">
+      <router-link :to="{ name: 'Login' }"
+        >Ingresar usuario</router-link
       >
+      </p>
       <carousel />
       <Titulo texto="La academia de música en casa" />
     </div>
