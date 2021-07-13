@@ -63,8 +63,23 @@ export default {
         console.log(error);
       }
     },
+    async actualizarFavoritas() {
+      try {
+        // guarda las favoritas en la base de datos de mockapi
+        const newObj = [];
+        this.favoritas.map((e) => newObj.add(e));
+        await axios.post(
+          "https://60eb2e32e9647b0017cddcfa.mockapi.io/usuarios/favoritas",
+          newObj
+        );
+        console.log(newObj);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async actualizarUsuario() {
       try {
+        // guarda el usuario en la base de datos de mockapi
         await axios.put(
           "https://60eb2e32e9647b0017cddcfa.mockapi.io/usuarios/optimus/" +
             this.usuario.id,
@@ -77,23 +92,27 @@ export default {
     calcularFavoritas() {
       let cant = 0;
       let c;
+      // cuenta la cantidad de reproducciones de una cancion
       for (c of this.reproducidas) {
         if (c.cancion.id == this.reproduciendo.cancion.id) cant++;
       }
       if (cant >= 3) {
+        // verifica que no este registrada
         let existe = this.favoritas.filter(
           (f) => f.cancion.id == this.reproduciendo.cancion.id
         );
+        // si no esta la agrega
         if (existe.length == 0) this.accionAgregarFavoritas(this.reproduciendo);
       }
     },
     finalizaReproduccion() {
+      // graba puntaje
       this.reproduciendo.puntaje = ((this.timePassed * 10) / this.max).toFixed(0);
       this.calcularFavoritas();
-      this.accionActualizarPuntos(
-        this.reproduciendo.puntaje
-      );
+      // actualiza puntaje en el usuario
+      this.accionActualizarPuntos(this.reproduciendo.puntaje);
       this.actualizarUsuario();
+      //this.actualizarFavoritas();
     },
     stopTimer() {
       clearInterval(this.timerInterval);

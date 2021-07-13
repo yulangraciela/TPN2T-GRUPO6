@@ -12,15 +12,13 @@
         <label>Puntos totales: {{ usuario.puntaje }}</label>
       </div>
     </div>
-    <h2>Canciones reproducida por el usuario</h2>
+    <h2>Ultima cancion reproducida por el usuario</h2>
 
     <div
-      v-for="(item, index) in this.usuario.canciones"
-      :key="index"
       class="col"
     >
-      {{ item.cancion.name }}
-      <b-button :to="'/Reproductor/' + `${item.cancion.id}`" variant="primary"
+      {{ this.usuario.canciones[0].cancion.name }}
+      <b-button :to="'/Reproductor/' + `${this.usuario.canciones[0].cancion.id}`" variant="primary"
         >ir</b-button
       >
     </div>

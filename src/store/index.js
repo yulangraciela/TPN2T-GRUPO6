@@ -13,12 +13,25 @@ export default new Vuex.Store({
         usuario: null,
     },
     mutations: {
+        registrarTodasLasFavoritas(state, favoritas) {
+            state.favoritas = favoritas;
+        },
         agregarCancion(state, cancion) {
             state.reproducidas.push(cancion);
             state.usuario.canciones.unshift(cancion);
         },
-        agregarFavoritas(state, cancion) {
+        async agregarFavoritas(state, cancion) {
             state.favoritas.push(cancion);
+            /*state.favoritas.push(JSON.parse(JSON.stringify(cancion)));
+      try {
+        await axios.post(
+          "https://60eb2e32e9647b0017cddcfa.mockapi.io/usuarios/favoritas",
+          JSON.parse(JSON.stringify(state.favoritas))
+        );
+      } catch (error) {
+        console.log(error);
+      }*/
+
             //state.usuario.favoritas = state.favoritas;
         },
         registrarUsuario(state, usuario) {
@@ -51,6 +64,9 @@ export default new Vuex.Store({
         },
         accionActualizarPuntos({ commit }, puntaje) {
             commit("actualizarPuntos", puntaje);
+        },
+        accionRegistrarTodasLasFavoritas({ commit }, favoritas) {
+            commit("registrarTodasLasFavoritas", favoritas);
         },
     },
     modules: {},

@@ -2,7 +2,17 @@
   <div>
     <Titulo texto="Favoritas"></Titulo>
     <div v-for="(item, index) in favoritas" :key="index">
-      <p>{{ item.cancion.name }}</p>
+      <li
+        class="
+          list-group-item
+          d-flex
+          justify-content-between
+          align-items-center
+        "
+      >
+        <p>{{ item.cancion.name }}</p>
+        <span class="badge badge-primary badge-pill"></span>
+      </li>
     </div>
   </div>
 </template>

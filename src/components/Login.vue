@@ -37,7 +37,7 @@
       {{ error_msg }}
     </div>
     <div v-if="conectado">
-      <b-button class="btn btn-success">
+      <b-button class="btn btn-black">
         <router-link to="/MenuUsuario"> Presiona aqui para ir a mis practicas </router-link>
       </b-button>
     </div>
@@ -61,6 +61,19 @@ export default {
     };
   },
   methods: {
+    async cargarFavoritas() {
+      let favoritas = [];
+      try {
+        let response = await axios.get(
+          "https://60eb2e32e9647b0017cddcfa.mockapi.io/usuarios/favoritas"
+        );
+        favoritas = response.data;
+        this.accionRegistrarTodasLasFavoritas(favoritas);
+      } catch (error) {
+        this.error_msg = error;
+        console.log(error);
+      }
+    },
     async login() {
       let usuarios = [];
       try {
@@ -78,6 +91,7 @@ export default {
           this.error = false;
           this.conectado = true;
           this.accionRegistrarUsuario (usuario);
+          this.cargarFavoritas();
         } else {
           this.error_msg = "Usuario o clave incorrecta";
           this.error = true;
@@ -87,7 +101,7 @@ export default {
         console.log(error);
       }
     },
-    ...mapActions(["accionRegistrarUsuario"]),
+    ...mapActions(["accionRegistrarUsuario", "accionRegistrarTodasLasFavoritas"]),
   },
 };
 </script>
