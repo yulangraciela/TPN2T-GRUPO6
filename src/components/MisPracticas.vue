@@ -2,10 +2,21 @@
   <div class="row">
     <Titulo texto="Cancionero" />
     <div v-for="(item, index) in arrayCancionero" :key="index" class="col">
-      {{ item.name }}
-      <b-button :to="'/Reproductor/' + `${item.id}`" variant="primary"
-        >ir</b-button
+      <li
+        class="
+          list-group-item
+          d-flex
+          justify-content-between
+          align-items-center
+        "
       >
+        {{ item.name }}
+        <span class="badge badge-primary badge-pill">
+          <b-button :to="'/Reproductor/' + `${item.id}`" variant="primary"
+            >ir</b-button
+          ></span
+        >
+      </li>
     </div>
     <Footer />
   </div>

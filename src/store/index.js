@@ -30,11 +30,12 @@ export default new Vuex.Store({
             //if (typeof state.usuario.puntaje != 'number')
             //    state.usuario.puntaje = puntaje;
             //else
-            state.usuario.puntaje = parseInt(state.usuario.puntaje) + parseInt(puntaje);
+            state.usuario.puntaje =
+                parseInt(state.usuario.puntaje) + parseInt(puntaje);
 
-            const cancion = state.usuario.canciones[state.usuario.canciones.length - 1];
+            const cancion =
+                state.usuario.canciones[state.usuario.canciones.length - 1];
             cancion.puntaje = puntaje;
-
         },
     },
     actions: {

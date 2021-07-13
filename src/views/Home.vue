@@ -5,9 +5,7 @@
         <img alt="Vue logo" style="width: 50%" src="../assets/logo1.svg" />
       </p>
       <p class="bg-light">
-      <router-link :to="{ name: 'Login' }"
-        >Ingresar usuario</router-link
-      >
+        <router-link :to="{ name: 'Login' }">Ingresar usuario</router-link>
       </p>
       <carousel />
       <Titulo texto="La academia de música en casa" />
